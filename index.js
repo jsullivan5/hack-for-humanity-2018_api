@@ -60,7 +60,6 @@ app.post('/email', (req, res, next) => {
     // send mail with defined transport object
     return transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log('an error: +++++++++++++++', error);
         return next(error);
       }
 
