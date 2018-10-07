@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 // const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const watson = require('watson-developer-cloud');
@@ -15,6 +16,7 @@ const authorization = new watson.AuthorizationV1({
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/auth', (req, res) => {
   try {
