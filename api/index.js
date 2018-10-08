@@ -11,12 +11,6 @@ const _ = require('lodash');
 
 const watsonAuthRouter = require('./routes/auth.route/auth.route');
 
-const authorization = new watson.AuthorizationV1({
-  username: process.env.SPEECH_TO_TEXT_USERNAME,
-  password: process.env.SPEECH_TO_TEXT_PASSWORD,
-  url: watson.SpeechToTextV1.URL
-});
-
 const app = express();
 
 // global middelware
