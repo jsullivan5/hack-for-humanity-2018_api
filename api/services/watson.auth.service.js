@@ -1,17 +1,18 @@
-require('dotenv');
-
 const watson = require('watson-developer-cloud');
 
-const authorization = new watson.AuthorizationV1({
-  username: process.env.SPEECH_TO_TEXT_USERNAME,
-  password: process.env.SPEECH_TO_TEXT_PASSWORD,
-  url: watson.SpeechToTextV1.URL
-});
-
+const config = require('config');
 
 class WatsonAuthService {
   constructor() {
-    this.authorization = authorization;
+    this.authorization = this._init();
+  }
+
+  _init() {
+    return new watson.AuthorizationV1({
+      username: config.watsonUserName,
+      password: config.watsonPassword,
+      url: watson.SpeechToTextV1.URL
+    });
   }
 
   authorize() {
