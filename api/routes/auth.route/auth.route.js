@@ -3,13 +3,13 @@ require('dotenv');
 const express = require('express');
 const router = express.Router();
 
-const authorization = new watson.AuthorizationV1({
-  username: process.env.SPEECH_TO_TEXT_USERNAME,
-  password: process.env.SPEECH_TO_TEXT_PASSWORD,
-  url: watson.SpeechToTextV1.URL
-});
-
 router.get('/', (req, res) => {
+  const authorization = new watson.AuthorizationV1({
+    username: process.env.SPEECH_TO_TEXT_USERNAME,
+    password: process.env.SPEECH_TO_TEXT_PASSWORD,
+    url: watson.SpeechToTextV1.URL
+  });
+
   try {
     authorization.getToken(function(err, token) {
       if (!token) {
