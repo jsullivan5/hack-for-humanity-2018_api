@@ -1,6 +1,6 @@
 const watson = require('watson-developer-cloud');
 
-const config = require('config');
+const config = require('../util/config');
 
 class WatsonAuthService {
   constructor() {
