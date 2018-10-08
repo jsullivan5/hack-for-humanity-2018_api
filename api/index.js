@@ -52,7 +52,7 @@ app.post('/email', (req, res, next) => {
     const mailOptions = {
       from: 'sender@email.com', // sender address
       to: recipietEmail, // list of receivers
-      subject: message, // Subject line
+      subject: `Message From reParent`, // Subject line
       text: `${message}`, // plain text body
       html: `<p>${message}</p>`// html text body
     };
