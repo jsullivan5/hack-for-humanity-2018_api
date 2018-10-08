@@ -9,6 +9,8 @@ const nodemailer = require('nodemailer');
 
 const _ = require('lodash');
 
+const watsonAuthRouter = require('./routes/auth.route/auth.route');
+
 const authorization = new watson.AuthorizationV1({
   username: process.env.SPEECH_TO_TEXT_USERNAME,
   password: process.env.SPEECH_TO_TEXT_PASSWORD,
@@ -17,23 +19,13 @@ const authorization = new watson.AuthorizationV1({
 
 const app = express();
 
+// global middelware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get('/auth', (req, res) => {
-  try {
-    authorization.getToken(function (err, token) {
-      if (!token) {
-        console.log('error:', err);
-      } else {
-        return res.status(200).send(token);
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+// routing
+app.use('/auth', watsonAuthRouter);
 
 app.post('/email', (req, res, next) => {
   const recipietEmail = _.get(req, 'body.recipientEmail', process.env.EMAIL_RECIPIENT);
