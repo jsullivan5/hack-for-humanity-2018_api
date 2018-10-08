@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const watsonAuthRouter = require('./routes/auth.route');
+const emailRouter = require('/routes/email.route');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 // routing
 app.use('/auth', watsonAuthRouter);
+app.use('/email', emailRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

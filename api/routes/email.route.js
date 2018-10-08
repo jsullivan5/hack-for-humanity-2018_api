@@ -2,23 +2,25 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const _ = require('lodash');
 
+const config = require('../util/config');
+
 const router = express.Router();
 
-app.post('/email', (req, res, next) => {
+app.post('/', (req, res, next) => {
+  const message = _.get(req, 'body.message', 'Some one loves you....');
   const recipietEmail = _.get(
     req,
     'body.recipientEmail',
-    process.env.EMAIL_RECIPIENT
+    config.emailRecipient // lodash default value if no recipient sent in post body...
   );
-  const message = _.get(req, 'body.message', 'Some one loves you....');
 
   nodemailer.createTestAccount(async (err, account) => {
     // create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: config.emailClient,
       auth: {
-        user: process.env.EMAIL_SENDER,
-        pass: process.env.EMAIL_PASSWORD
+        user: config.emailSender, // defaulted to whatever is in sample env
+        pass: config.emailPassword, // an acual 
       }
     });
 
