@@ -4,12 +4,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const watson = require('watson-developer-cloud');
 const nodemailer = require('nodemailer');
 
 const _ = require('lodash');
 
-const watsonAuthRouter = require('./routes/auth.route/auth.route');
+const watsonAuthRouter = require('./routes/auth.route');
 
 const app = express();
 
