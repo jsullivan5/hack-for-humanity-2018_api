@@ -1,11 +1,15 @@
-require('dotenv').config();
+require('dotenv').config(); // allow acccess to env vars in app
 
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const logger = require('./util/logger');
+const config = require('./util/config');
 
 const watsonAuthRouter = require('./routes/auth.route');
 const emailRouter = require('./routes/email.route');
+
+const port = config.port;
 
 const app = express();
 
@@ -18,11 +22,12 @@ app.use(cors());
 app.use('/auth', watsonAuthRouter);
 app.use('/email', emailRouter);
 
+// global error handler
 app.use((err, req, res, next) => {
-  console.error(err);
+  logger.error(err);
   res.status(err.status || 500).send(err.message || 'Internal Server Error');
 });
 
-app.listen(5000, () => {
-  console.info(`iGen server is listening on port ${5000}`);
+app.listen(port, () => {
+  logger.info(`iGen server is listening on port ${port}`);
 });
