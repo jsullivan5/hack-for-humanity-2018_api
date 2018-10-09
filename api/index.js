@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const watsonAuthRouter = require('./routes/auth.route');
-const emailRouter = require('/routes/email.route');
+const emailRouter = require('./routes/email.route');
 
 const app = express();
 

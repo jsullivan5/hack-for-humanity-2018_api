@@ -6,7 +6,7 @@ const config = require('../util/config');
 
 const router = express.Router();
 
-app.post('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const message = _.get(req, 'body.message', 'Some one loves you....');
   const recipietEmail = _.get(
     req,
