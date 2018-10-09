@@ -1,7 +1,7 @@
 module.exports = {
   // node environment variables
-  environment: process.env.NODE_ENV,
-  port: process.env.PORT,
+  environment: process.env.NODE_ENV || 'DEV',
+  port: process.env.PORT || 5000,
   // Watson vars
   watsonUserName: process.env.SPEECH_TO_TEXT_USERNAME,
   watsonPassword: process.env.SPEECH_TO_TEXT_PASSWORD,
