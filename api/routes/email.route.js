@@ -6,6 +6,7 @@ const config = require('../util/config');
 
 const router = express.Router();
 
+// TODO: Refactor this to use a real email client e.g. Sendgrid / Mailchimp
 router.post('/', (req, res, next) => {
   const message = _.get(req, 'body.message', 'Some one loves you....');
   const recipietEmail = _.get(
