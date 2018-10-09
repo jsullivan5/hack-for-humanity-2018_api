@@ -3,11 +3,7 @@ const watson = require('watson-developer-cloud');
 const config = require('../util/config');
 
 class WatsonAuthService {
-  constructor() {
-    this.authorization = this._init();
-  }
-
-  _init() {
+  _getAuthClient() {
     return new watson.AuthorizationV1({
       username: config.watsonUserName,
       password: config.watsonPassword,
@@ -15,15 +11,18 @@ class WatsonAuthService {
     });
   }
 
-  authorize() {
-    return this.authorization.getToken(function (err, token) {
-      if (!token) {
-        throw new Error('Problem authorizing Watson');
-      } else {
-        return token;
-      }
-    });
+  async authorize() {
+    const authorization = this._getAuthClient();
+    return new Promise((resolve, reject) => {
+      authorization.getToken(async (err, token) => {
+        if (!token) {
+          reject(new Error('Problem authorizing Watson'));
+        } else {
+          resolve(token);
+        }
+      });
+    })
   }
 }
 
-module.exports = WatsonAuthService; 
+module.exports = new WatsonAuthService(); 

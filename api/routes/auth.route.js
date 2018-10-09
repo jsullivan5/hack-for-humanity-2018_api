@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const WatsonAuthService = require(
-  '../services/watson.auth.service'
-);
-const watsonAuthService = new WatsonAuthService();
+const watsonAuthService = require('../services/watson.auth.service');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
    try {
-    const token = watsonAuthService.authorize();
+    const token = await watsonAuthService.authorize();
     res.status(200).send(token);
   } catch (error) {
     next(error);
