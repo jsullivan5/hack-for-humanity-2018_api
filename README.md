@@ -93,4 +93,4 @@ Coming soon...
 ## Acknowledgments
 
 * Arizona State University
-* Hack for Humanity 2018
+* [Hack for Humanity 2018](http://www.hacksforhumanity.io/)
