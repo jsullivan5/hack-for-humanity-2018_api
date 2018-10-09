@@ -72,6 +72,38 @@ Lint from the command line
 npm run lint
 ```
 
+
+- Always branch off of `master`
+
+- Always work on a branch
+
+```
+git branch my-branch
+```
+
+- update branch off master with `git rebase`.  This puts your commits on top of other's and creates a cleaner commit history
+    
+    * `git pull origin master --rebase`
+        - There may be merge conflicts...
+          1. If so, look in text editor and figure out what should be merged
+          2. After fixing, add commits to staging with `git add .`
+          3. Continue with rebase with `git rebase --continue`
+          4. Repeat until your recent commits are applied
+          5. Sometimes git is terrible and will not run the continue command.
+              - If it's been tried a couple times and is not working, don't be afraid to `git rebase --skip`
+          6. And if all `hell` breaks loose:  `git rebase --abort` and try again...
+
+
+- Don't work on a branch for too long.  It's hard to review and incurs more merge conflicts
+
+- Push branches up to Github and create pull requests
+
+```
+git push origin my-branch
+```
+
+- Pull requests can and should be reviewed by another developer before merging.  Tag someone in the `reviewers` section on the right.
+
 ## Running the tests
 
 Coming soon...
