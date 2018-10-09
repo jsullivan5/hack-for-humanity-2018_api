@@ -3,15 +3,15 @@ require('dotenv').config(); // allow acccess to env vars in app
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const logger = require('./util/logger');
 const config = require('./util/config');
-const morgan = require('morgan');
 
 const watsonAuthRouter = require('./routes/auth.route');
 const emailRouter = require('./routes/email.route');
 
 const port = config.port;
-const morganLogLevel = config.environment === 'production' ? 'combined' : 'dev'
+const morganLogLevel = config.environment === 'production' ? 'combined' : 'dev';
 
 const app = express();
 
