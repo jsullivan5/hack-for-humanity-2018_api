@@ -16,11 +16,17 @@ What things you need to install the software and how to install them
 git
 node
 npm
+IBM Bluemix
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
+
+#### IBM Bluemix
+This project uses IBM Bluemix Watson API to accomplish speech to text.
+
+To set up:  Visit this link to the [IBM Website](https://www.ibm.com/watson/services/speech-to-text/) and follow the prompts to start for free.
 
 1. Clone this repository
 
@@ -40,13 +46,31 @@ cd hack-for-humanity-2018_api
 npm install
 ```
 
-4. Start development server
+4. Configure the enviroment
+
+Rename sample.env to .env
+```
+mv sample.env .env
+```
+
+- Change the values from the sample values to fit your use case. (e.g your email variables, your IBM bluemix credentials)
+- In order to use with gmail, the target account will need to be configured to [allow less secure apps for testing](https://myaccount.google.com/lesssecureapps)
+
+4. Start development server with hot reloading
 
 ```
 npm run dev
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+#### This project uses eslint
+- If the packages were installed, eslint is already configured.
+- Follow the instructions for your text editor to install eslint to use it. [Atom](https://atom.io/packages/linter-eslint)
+
+Lint from the command line
+
+```
+npm run lint
+```
 
 ## Running the tests
 
@@ -56,45 +80,17 @@ Coming soon...
 
 Coming soon...
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
 
 Coming soon...
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* [Node](https://nodejs.org/en/) - Framework used
+* [IBM Watson](https://github.com/watson-developer-cloud/speech-to-text-nodejs) - Speech to Text API
+* [Nodemailer](https://nodemailer.com/about/) - Email client
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+* Arizona State University
+* Hack for Humanity 2018
