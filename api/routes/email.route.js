@@ -10,8 +10,8 @@ const router = express.Router();
 
 router.post('/', (req, res, next) => {
   const message = _.get(req, 'body.message', 'Some one loves you....');
-  const recipientEmail = _.get(req, 'body.recipientEmail',  config.emailRecipient);
-  
+  const recipientEmail = _.get(req, 'body.recipientEmail', config.emailRecipient);
+
   try {
     emailService.sendEmail(message, recipientEmail);
     res.sendStatus(201);
