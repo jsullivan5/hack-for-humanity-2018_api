@@ -3,16 +3,16 @@ const watson = require('watson-developer-cloud');
 const config = require('../util/config');
 
 class WatsonAuthService {
-  _getAuthClient() {
+  static _getAuthClient() {
     return new watson.AuthorizationV1({
       username: config.watsonUserName,
       password: config.watsonPassword,
-      url: watson.SpeechToTextV1.URL
+      url: watson.SpeechToTextV1.URL,
     });
   }
 
   async authorize() {
-    const authorization = this._getAuthClient();
+    const authorization = this.constructor._getAuthClient();
     return new Promise((resolve, reject) => {
       authorization.getToken(async (err, token) => {
         if (!token) {
@@ -21,8 +21,8 @@ class WatsonAuthService {
           resolve(token);
         }
       });
-    })
+    });
   }
 }
 
-module.exports = new WatsonAuthService(); 
+module.exports = new WatsonAuthService();
