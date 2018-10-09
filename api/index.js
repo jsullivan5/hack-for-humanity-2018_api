@@ -5,18 +5,21 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('./util/logger');
 const config = require('./util/config');
+const morgan = require('morgan');
 
 const watsonAuthRouter = require('./routes/auth.route');
 const emailRouter = require('./routes/email.route');
 
 const port = config.port;
+const morganLogLevel = config.environment === 'production' ? 'combined' : 'dev'
 
 const app = express();
 
 // global middelware
+app.use(cors());
+app.use(morgan(morganLogLevel));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 
 // routing
 app.use('/auth', watsonAuthRouter);
