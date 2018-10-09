@@ -10,7 +10,7 @@ const config = require('./util/config');
 const watsonAuthRouter = require('./routes/auth.route');
 const emailRouter = require('./routes/email.route');
 
-const port = config.port;
+const { port } = config;
 const morganLogLevel = config.environment === 'production' ? 'combined' : 'dev';
 
 const app = express();
