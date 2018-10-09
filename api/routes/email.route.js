@@ -20,14 +20,14 @@ router.post('/', (req, res, next) => {
     var transporter = nodemailer.createTransport({
       service: config.emailClient,
       auth: {
-        user: config.emailSender, // defaulted to whatever is in sample env
-        pass: config.emailPassword, // an acual 
+        user: config.emailSender,
+        pass: config.emailPassword,
       }
     });
 
     const mailOptions = {
       from: 'sender@email.com', // sender address
-      to: recipietEmail, // list of receivers
+      to: recipietEmail, // list of receivers, can be multiple if comma separated list
       subject: `Message From reParent`, // Subject line
       text: `${message}`, // plain text body
       html: `<p>${message}</p>` // html text body
