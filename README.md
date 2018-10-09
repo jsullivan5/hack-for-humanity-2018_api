@@ -2,7 +2,7 @@
 
 This api was built for the ASU Hacks For Humanity 2018 hackathon.  It's part of a platform that provides an accessible a 'penpal' platform that allows elderly user to connect with others via email with speech to text email sending.
 
-To be used with the [reParent Client](https://github.com/jsullivan5/hackf-for-humanity2018)
+To be used with the [reParent Client](https://github.com/jsullivan5/hack-for-humanity-2018_client)
 
 ## Getting Started
 
